@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Docker</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mycss.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron" style="background-color: purple">
+            <h1 style="color: white">Docker构建</h1>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#workspace" data-toggle="tab">工作台</a>
+                    </li>
+                    <li>
+                        <a href="#repertory" data-toggle="tab">镜像库</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <!--workspace div-->
+                    <div id="workspace" class="tab-pane active fade in">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="nameOfImage" class="col-sm-2 control-label">镜像名称</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="nameOfImage">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="versionOfImage" class="col-sm-2 control-label">镜像版本</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="versionOfImage" value="1.0.0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nameOfParent" class="col-sm-2 control-label">父镜像名称</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="nameOfParent">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="versionOfParent" class="col-sm-2 control-label">父镜像版本</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="versionOfParent" value="latest">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-2 control-label">
+                                    <strong>依赖管理</strong>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="panel panel-default">
+                                        <table id="dependenciesList" class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th> </th>
+                                                    <th>依赖名称</th>
+                                                    <th>版本号</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td>Python</td>
+                                                    <td>3.0</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="nameOfDependences" placeholder="name">
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="versionOfDependences" placeholder="version">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button id="addDependences" type="button" class="btn btn-success">添加</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px">
+                            <div id="alert1" class="alert alert-danger col-sm-8 col-sm-push-2" role="alert">wahaha</div>
+                            </div>
+                            
+                            <hr>
+                            <div class="form-group">
+                                <label for="command" class="col-sm-2 control-label">CMD</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="command">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-push-2">
+                                    <button type="submit" class="btn btn-success">提交</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--repertory div-->
+                    <div id="repertory" class="tab-pane fade">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th>镜像名称</th>
+                                    <th>版本号</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>Ubuntu</td>
+                                    <td>16.04-tools</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well well-lg">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading text-center">基本信息</div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>镜像名称</td>
+                                    <td>centos</td>
+                                </tr>
+                                <tr>
+                                    <td>版本号</td>
+                                    <td>16.04-tools</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="jumbotron" style="background-color: white">
+        </div>
+    </footer>
+    <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+    <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src='js/myjs.js'></script>
+</body>
+
+</html>
