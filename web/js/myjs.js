@@ -52,3 +52,11 @@ $('#submit1').click(function(){
 	alert(JSON.stringify(jsonM,null, ' '));
 	
 });
+
+$(function () {
+	$('#well1').hide();
+});
+
+$('#img1').click(function() {
+	$('#well1').show();
+});
