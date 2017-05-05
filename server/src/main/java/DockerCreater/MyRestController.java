@@ -1,5 +1,8 @@
 package DockerCreater;
 
+import DockerCreater.algorithm.DepTools;
+import DockerCreater.entity.AloneDependency;
+import DockerCreater.entity.Dependency;
 import DockerCreater.repository.DependencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,7 +31,7 @@ public class MyRestController {
 
     @RequestMapping(value = "/dep",method = RequestMethod.GET)
     public String hello2(){
-        return_str= dependencyRepository.findByArtifactId("scala-library").getVersion();
+        return_str= DepTools.findAllDep(dependencyRepository,new AloneDependency("twist","twist_one","1.0")).toString();
         return return_str;
     }
 

@@ -2,6 +2,7 @@ package DockerCreater.repository;
 
 import DockerCreater.entity.Dependency;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,5 +10,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface DependencyRepository extends MongoRepository<Dependency,String> {
-    Dependency findByArtifactId(String artifactId);
+
+    @Query(value = "{artifactId:?0,groupId:?1,version:?2}")
+    Dependency findByThreePoints(String artifactId,String groupId,String version);
 }

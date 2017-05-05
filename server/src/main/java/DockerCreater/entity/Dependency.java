@@ -50,6 +50,10 @@ public class Dependency {
         this.parents = parents;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getGroupId() {
         return groupId;
     }

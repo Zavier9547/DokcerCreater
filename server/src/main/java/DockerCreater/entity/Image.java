@@ -38,6 +38,10 @@ public class Image {
         this.version="1.0";
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }

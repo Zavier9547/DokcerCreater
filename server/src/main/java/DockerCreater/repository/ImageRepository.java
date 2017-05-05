@@ -2,6 +2,7 @@ package DockerCreater.repository;
 
 import DockerCreater.entity.Image;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,5 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ImageRepository extends MongoRepository<Image,String> {
-    Image findByName(String name);
+
+    @Query(value = "{name:?0,version:?1}")
+    Image findByTwoPoints(String name,String version);
 }
