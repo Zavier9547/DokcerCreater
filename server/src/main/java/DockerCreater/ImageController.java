@@ -16,7 +16,7 @@ public class ImageController {
     private String return_str;
 
     @RequestMapping(value = "/images/list",method = RequestMethod.GET)
-    public String hello(){
+    public String hehe(){
         return_str= "[{\"name\":\"ubuntu\",\"version\":\"1.1.0\"},{\"name\":\"ubuntu\",\"version\":\"1.1.0\"}]";
         return return_str;
     }

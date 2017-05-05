@@ -60,3 +60,9 @@ $(function () {
 $('#img1').click(function() {
 	$('#well1').show();
 });
+
+$('#test').click(function() {
+	$.get('http://localhost', function(data) {
+		alert(data);
+	});
+});
