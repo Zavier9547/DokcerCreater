@@ -4,6 +4,7 @@ package DockerCreater.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,12 +29,14 @@ public class Dependency {
         this.groupId = groupId;
         this.artifactId = artifactId;
         this.version = version;
+        parents=new ArrayList<>();
     }
 
     public Dependency(String groupId, String artifactId) {
         this.groupId = groupId;
         this.artifactId = artifactId;
         this.version = "1.0";
+        parents=new ArrayList<>();
     }
 
     public Dependency(String groupId, String artifactId, String version, List<AloneDependency> parents) {

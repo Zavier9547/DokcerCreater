@@ -17,7 +17,7 @@ public class AloneDependency {
         this.version = version;
     }
 
-    public AloneDependency(String artifactId, String groupId) {
+    public AloneDependency( String groupId,String artifactId) {
         this.artifactId = artifactId;
         this.groupId = groupId;
         this.version = "1.0";
@@ -45,5 +45,22 @@ public class AloneDependency {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return this.getGroupId()+"-"+this.getArtifactId()+"-"+this.getVersion();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getClass()!=obj.getClass())
+            return false;
+        AloneDependency temp= (AloneDependency)obj;
+        if (this.getArtifactId().equals(temp.getArtifactId()) &&
+                this.getGroupId().equals(temp.getGroupId()) &&
+                this.getVersion().equals(temp.getVersion()))
+            return true;
+        return false;
     }
 }

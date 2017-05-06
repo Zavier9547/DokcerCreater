@@ -31,9 +31,8 @@ public class DepTools {
             list.add(queue.get(i));
 
             queue.remove(i);
-            System.out.println("hehe");
 
-//          queue.addAll(dependencyRepository.findByThreePoints(aId, gId, ver).getParents());
+            queue.addAll(dependencyRepository.findByThreePoints(aId, gId, ver).getParents());
 
         }
         return list;
