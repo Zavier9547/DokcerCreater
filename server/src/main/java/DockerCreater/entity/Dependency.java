@@ -88,4 +88,9 @@ public class Dependency {
     public void setParents(List<AloneDependency> parents) {
         this.parents = parents;
     }
+
+    @Override
+    public String toString() {
+        return this.getGroupId()+"-"+this.getArtifactId()+"-"+this.getVersion();
+    }
 }
