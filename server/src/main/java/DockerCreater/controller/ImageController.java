@@ -45,7 +45,8 @@ public class ImageController {
         }
         Response re = new Response();
         for(AloneDependency aDep: list){
-            if (aDep.getArtifactId().equals(aloneDependency.getArtifactId())){
+            if (aDep.getArtifactId().equals(aloneDependency.getArtifactId())
+                    && aDep.getGroupId().equals(aloneDependency.getGroupId())){
                 re.setStatus("crashed");
                 re.setInfo(aDep.toString());
             }
