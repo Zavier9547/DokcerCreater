@@ -5,7 +5,6 @@ package DockerCreater.serviceData;
  */
 public class ImageRequest {
     private String name;
-    private String type;
     private String version;
 
     public ImageRequest() {
@@ -17,14 +16,6 @@ public class ImageRequest {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getVersion() {

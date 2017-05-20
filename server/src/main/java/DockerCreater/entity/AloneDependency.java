@@ -3,40 +3,42 @@ package DockerCreater.entity;
 /**
  * Created by Jon on 2017/5/4.
  */
-public class AloneDependency {
-    private String groupId;
-    private String artifactId;
+public class AloneDependency implements Comparable<AloneDependency> {
+    private String name;
     private String version;
+    private String architecture;
 
     public AloneDependency() {
     }
 
-    public AloneDependency(String groupId, String artifactId, String version) {
-        this.groupId = groupId;
-        this.artifactId = artifactId;
-        this.version = version;
-    }
-
-    public AloneDependency( String groupId,String artifactId) {
-        this.artifactId = artifactId;
-        this.groupId = groupId;
+    public AloneDependency(String name) {
+        this.architecture = "default";
+        this.name = name;
         this.version = "1.0";
     }
 
-    public String getGroupId() {
-        return groupId;
+    public AloneDependency(String name, String version, String architecture) {
+        this.name = name;
+        this.architecture = architecture;
+        this.version = version;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
+
+
+    public String getName() {
+        return name;
     }
 
-    public String getArtifactId() {
-        return artifactId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setArtifactId(String artifactId) {
-        this.artifactId = artifactId;
+    public String getArchitecture() {
+        return architecture;
+    }
+
+    public void setArchitecture(String architecture) {
+        this.architecture = architecture;
     }
 
     public String getVersion() {
@@ -49,7 +51,7 @@ public class AloneDependency {
 
     @Override
     public String toString() {
-        return this.getGroupId()+"-"+this.getArtifactId()+"-"+this.getVersion();
+        return this.getName()+"_"+this.getVersion()+"_"+this.getArchitecture();
     }
 
     @Override
@@ -57,10 +59,15 @@ public class AloneDependency {
         if (this.getClass()!=obj.getClass())
             return false;
         AloneDependency temp= (AloneDependency)obj;
-        if (this.getArtifactId().equals(temp.getArtifactId()) &&
-                this.getGroupId().equals(temp.getGroupId()) &&
+        if (this.getArchitecture().equals(temp.getArchitecture()) &&
+                this.getName().equals(temp.getName()) &&
                 this.getVersion().equals(temp.getVersion()))
             return true;
         return false;
+    }
+
+    @Override
+    public int compareTo(AloneDependency aDep){
+        return this.name.compareTo(aDep.getName());
     }
 }

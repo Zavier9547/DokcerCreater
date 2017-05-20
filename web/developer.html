@@ -13,7 +13,8 @@
 <body>
     <div class="container">
         <div class="jumbotron" style="background-color: purple">
-            <h1 style="color: white">Docker软件依赖描述和冲突检测</h1>
+            <h1 style="color: white">DDMIAS系统</h1>
+            <p style="color: white">开发者界面</p>
         </div>
         <hr>
         <div class="row">
@@ -33,7 +34,7 @@
                             <div class="form-group">
                                 <label for="nameOfParent" class="col-sm-2 control-label">父镜像名称</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="nameOfParent" value="image_one">
+                                    <input type="text" class="form-control" id="nameOfParent" value="image-one">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -54,9 +55,9 @@
                                             <thead>
                                                 <tr>
                                                     <th> </th>
-                                                    <th>GroupId</th>
-                                                    <th>ArtifactId</th>
-                                                    <th>Version</th>
+                                                    <th>依赖名称</th>
+                                                    <th>依赖版本</th>
+                                                    <th>依赖架构</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -67,13 +68,13 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="groupId" placeholder="groupId">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="artifactId" placeholder="artifactId">
+                                            <input type="text" class="form-control" id="name" placeholder="name">
                                         </div>
                                         <div class="col-sm-4">
                                             <input type="text" class="form-control" id="version" placeholder="version">
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <input type="text" class="form-control" id="architecture" placeholder="architecture">
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +95,7 @@
                             <div class="form-group">
                                 <label for="nameOfImage" class="col-sm-2 control-label">镜像名称</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="nameOfImage" value="image_one">
+                                    <input type="text" class="form-control" id="nameOfImage" value="image-one">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -124,7 +125,7 @@
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
     <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src='js/myjs.js'></script>
+    <script src='js/developer.js'></script>
 </body>
 
 </html>

@@ -16,40 +16,41 @@ public class Dependency {
     @Id
     private String id;
 
-    private String groupId;
-    private String artifactId;
+    private String name;
     private String version;
+    private String architecture;
+
 
     private List<AloneDependency> parents;
 
     public Dependency() {
     }
 
-    public Dependency(String groupId, String artifactId, String version) {
-        this.groupId = groupId;
-        this.artifactId = artifactId;
-        this.version = version;
-        parents=new ArrayList<>();
-    }
-
-    public Dependency(String groupId, String artifactId) {
-        this.groupId = groupId;
-        this.artifactId = artifactId;
+    public Dependency(String name) {
+        this.name = name;
+        this.architecture = "default";
         this.version = "1.0";
-        parents=new ArrayList<>();
+        parents=new ArrayList<AloneDependency>();
     }
 
-    public Dependency(String groupId, String artifactId, String version, List<AloneDependency> parents) {
-        this.groupId = groupId;
-        this.artifactId = artifactId;
-        this.version = version;
+    public Dependency(String name, List<AloneDependency> parents) {
+        this.name = name;
+        this.architecture = "default";
+        this.version = "1.0";
         this.parents = parents;
     }
 
-    public Dependency(String groupId, String artifactId, List<AloneDependency> parents) {
-        this.groupId = groupId;
-        this.artifactId = artifactId;
-        this.version = "1.0";
+    public Dependency(String name, String version, String architecture) {
+        this.name = name;
+        this.architecture = architecture;
+        this.version = version;
+        parents=new ArrayList<AloneDependency>();
+    }
+
+    public Dependency(String name, String version, String architecture, List<AloneDependency> parents) {
+        this.name = name;
+        this.architecture = architecture;
+        this.version = version;
         this.parents = parents;
     }
 
@@ -57,20 +58,20 @@ public class Dependency {
         return id;
     }
 
-    public String getGroupId() {
-        return groupId;
+    public String getName() {
+        return name;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getArtifactId() {
-        return artifactId;
+    public String getArchitecture() {
+        return architecture;
     }
 
-    public void setArtifactId(String artifactId) {
-        this.artifactId = artifactId;
+    public void setArchitecture(String architecture) {
+        this.architecture = architecture;
     }
 
     public String getVersion() {
@@ -91,6 +92,6 @@ public class Dependency {
 
     @Override
     public String toString() {
-        return this.getGroupId()+"-"+this.getArtifactId()+"-"+this.getVersion();
+        return this.getName()+"_"+this.getVersion()+"_"+this.getArchitecture();
     }
 }

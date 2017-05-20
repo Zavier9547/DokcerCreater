@@ -3,9 +3,9 @@ var dependenciesAlert = $('#alert1');
 
 $('#add').click(function() {
     var jsonM = {}
-    jsonM.groupId = $('#groupId').val()
-    jsonM.artifactId = $('#artifactId').val()
+    jsonM.name = $('#name').val()
     jsonM.version = $('#version').val()
+    jsonM.architecture = $('#architecture').val()
 
     $.ajax({
             url: 'http://localhost:80/dep',
@@ -41,9 +41,10 @@ $('#add').click(function() {
                         	if (t.status=="crashed"){
                         		alert("该依赖和基础镜像存在依赖冲突！");
                         	}else{
-                        		console.log(t.status)
-                        		dependenciesOj.append('<tr><td></td><td>'+jsonM.groupId+'</td><td>'+jsonM.artifactId+'</td><td>'+jsonM.version+'</td></tr>')
-        
+                        		dependenciesOj.append('<tr><td></td><td>'+jsonM.name+'</td><td>'+jsonM.version+'</td><td>'+jsonM.architecture+'</td></tr>')
+                                $('#name').val('')
+                                $('#version').val('')
+                                $('#architecture').val('')      
                         	}
                         })
                     })
@@ -75,7 +76,7 @@ $('#getTable').click(function() {
         .done(function(data) {
             $.get('http://localhost:80/images/' + data.info + '/table', function(re) {
                 depOj2.empty();
-                depOj2.append('<thead><tr><th></th><th>依赖名称</th></tr></thead>')
+                depOj2.append('<thead><tr><th></th><th>依赖关系树</th></tr></thead>')
                 depOj2.append('<tbody>')
                 re.forEach(function(value, index, array) {
                     depOj2.append('<tr><td></td><td>' + value.name + '</td></tr>')

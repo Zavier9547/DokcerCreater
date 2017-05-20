@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DependencyRepository extends MongoRepository<Dependency,String> {
 
-    @Query(value = "{artifactId:?0,groupId:?1,version:?2}")
-    Dependency findByThreePoints(String artifactId,String groupId,String version);
+    @Query(value = "{name:?0,version:?1,architecture:?2}")
+    Dependency findByThreePoints(String name,String version,String architecture);
 }

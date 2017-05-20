@@ -29,10 +29,4 @@ public class MyRestController {
         return return_str;
     }
 
-    @RequestMapping(value = "/dep",method = RequestMethod.GET)
-    public String hello2(){
-        return_str= DepTools.findAllDep(dependencyRepository,new AloneDependency("twist","twist_one","1.0")).toString();
-        return return_str;
-    }
-
 }

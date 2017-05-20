@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Docker</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+    <link rel="stylesheet" href="css/mycss.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron" style="background-color: purple">
+            <h1 style="color: white">DDMIAS系统</h1>
+            <p style="color: white">管理者界面</p>
+        </div>
+        <hr>
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#dependencies" data-toggle="tab">依赖管理</a>
+            </li>
+            <li>
+                <a href="#images" data-toggle="tab">镜像管理</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <!--dependencies div-->
+            <div id="dependencies" class="tab-pane active fade in">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-collapse">
+                            <button class="navbar-btn btn btn-info" data-toggle="modal" data-target="#myModal">添加新的镜像信息</button>
+                            <form class="navbar-form navbar-right" role="search">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </div>
+                                <button type="submit" class="btn btn-default">查询</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                <table id="DepList"></table>
+            </div>
+            <!--images div-->
+            <div id="images" class="tab-pane fade">
+                <table id="ImageList"></table>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="jumbotron" style="background-color: white">
+        </div>
+    </footer>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">依赖编辑窗口</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nameOfDep" class="control-label">依赖名称</label>
+                            <input type="text" class="form-control" id="nameOfDep">
+                        </div>
+                        <div class="form-group">
+                            <label for="versionOfDep" class="control-label">依赖版本</label>
+                            <input type="text" class="form-control" id="versionOfDep">
+                        </div>
+                        <div class="form-group">
+                            <label for="arcOfDep" class="control-label">依赖架构</label>
+                            <input type="text" class="form-control" id="arcOfDep">
+                        </div>
+                        <div class="form-group">
+                            <label for="arcOfDep" class="control-label">父级依赖</label>
+                            <textarea class="form-control" id="message-text" placeholder="格式name_version_architecture，多个依赖用';'隔开"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 如果要使用Bootstrap的js插件，必须先调入jQuery -->
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+    <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <script src='js/manager.js'></script>
+</body>
+
+</html>

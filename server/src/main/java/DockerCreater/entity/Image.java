@@ -3,6 +3,7 @@ package DockerCreater.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,18 +25,25 @@ public class Image {
     public Image() {
     }
 
-    public Image(String name, String type, String version, List<AloneDependency> dependency) {
-        this.name = name;
-        this.type = type;
-        this.version = version;
-        this.dependency = dependency;
-    }
-
     public Image(String name, List<AloneDependency> dependency) {
         this.name = name;
         this.dependency = dependency;
         this.type="type_one";
         this.version="1.0";
+    }
+
+    public Image(String name, String version, String type) {
+        this.name = name;
+        this.type = type;
+        this.version = version;
+        this.dependency = new ArrayList<AloneDependency>();
+    }
+
+    public Image(String name, String version, String type, List<AloneDependency> dependency) {
+        this.name = name;
+        this.type = type;
+        this.version = version;
+        this.dependency = dependency;
     }
 
     public String getId() {
@@ -72,5 +80,10 @@ public class Image {
 
     public void setDependency(List<AloneDependency> dependency) {
         this.dependency = dependency;
+    }
+
+    @Override
+    public String toString() {
+        return name+"_"+version;
     }
 }
