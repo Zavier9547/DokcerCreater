@@ -3,18 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<name>njucs</name>
-	<architecture>DockerCreater</architecture>
+	<groupId>edu.nju.cs</groupId>
+	<artifactId>DockerHelper</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>DockerCreater</name>
+	<name>DockerHelper</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
-		<name>org.springframework.boot</name>
-		<architecture>spring-boot-starter-parent</architecture>
-		<version>1.5.2.RELEASE</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -26,17 +26,17 @@
 
 	<dependencies>
 		<dependency>
-			<name>org.springframework.boot</name>
-			<architecture>spring-boot-starter-data-mongodb</architecture>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 		<dependency>
-			<name>org.springframework.boot</name>
-			<architecture>spring-boot-starter-web</architecture>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
-			<name>org.springframework.boot</name>
-			<architecture>spring-boot-starter-test</architecture>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -44,8 +44,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<name>org.springframework.boot</name>
-				<architecture>spring-boot-maven-plugin</architecture>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

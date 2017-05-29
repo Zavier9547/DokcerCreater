@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Docker</title>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
     <link rel="stylesheet" href="css/mycss.css">
 </head>
 
@@ -32,13 +33,13 @@
                     <div id="workspace" class="tab-pane active fade in">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label for="nameOfParent" class="col-sm-2 control-label">父镜像名称</label>
+                                <label for="nameOfParent" class="col-sm-2 control-label">基础镜像名称</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="nameOfParent" value="image-one">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="versionOfParent" class="col-sm-2 control-label">父镜像版本</label>
+                                <label for="versionOfParent" class="col-sm-2 control-label">基础镜像版本</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" id="versionOfParent" value="1.0">
                                 </div>
@@ -60,8 +61,7 @@
                                                     <th>依赖架构</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                
+                                            <tbody id="read">
                                             </tbody>
                                         </table>
                                     </div>
@@ -71,19 +71,26 @@
                                             <input type="text" class="form-control" id="name" placeholder="name">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="version" placeholder="version">
+                                            <input type="text" class="form-control" id="version" placeholder="version" value="1.0">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="architecture" placeholder="architecture">
+                                            <input type="text" class="form-control" id="architecture" placeholder="architecture" value="i386">
                                         </div>
                                     </div>
                                 </div>
                                 <hr>
                                 <div style="margin-top: 40px"></div>>
                                 <div class="row">
-                                    <div class="col-sm-6 col-sm-push-2">
+                                    <div class="col-sm-8 col-sm-push-2">
                                         <button id="add" type="button" class="btn btn-success">添加</button>
                                         <button id="delete" type="button" class="btn btn-default">删除</button>
+                                        <button id="conflict" type="button" class="btn btn-info" style="margin-left:100px">冲突检测</button>
+                                        <button id="recommend" type="button" class="btn btn-info" style="margin-left:100px">最优基础镜像检测</button>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 40px">
+                                    <div class="well col-sm-10 col-sm-push-2">
+                                        <p id="info">存在更优的基础镜像供使用：image-four_1.0</p>
                                     </div>
                                 </div>
                             </div>
@@ -91,27 +98,7 @@
                     </div>
                     <!--repertory div-->
                     <div id="repertory" class="tab-pane fade">
-                        <form id="form2" class="form-horizontal">
-                            <div class="form-group">
-                                <label for="nameOfImage" class="col-sm-2 control-label">镜像名称</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="nameOfImage" value="image-one">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="versionOfImage" class="col-sm-2 control-label">镜像版本</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="versionOfImage" value="1.0">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 col-sm-push-2">
-                                    <button id="getTable" type="button" class="btn btn-success">查询</button>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 40px"></div>
-                            <table id="dep" class="table table-hover"></table>
-                        </form>
+                        <table id="ImageList"></table>
                     </div>
                 </div>
             </div>
@@ -125,6 +112,7 @@
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
     <!-- 包括所有bootstrap的js插件或者可以根据需要使用的js插件调用　-->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
     <script src='js/developer.js'></script>
 </body>
 

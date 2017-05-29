@@ -1,21 +1,14 @@
-package DockerCreater.serviceData;
+package edu.nju.cs.DockerHelper.controllerData;
 
 /**
- * Created by Jon on 2017/5/20.
+ * Created by Jon on 2017/5/28.
  */
-public class DepResponse {
+public class DependencyRequest {
     private String name;
     private String version;
     private String architecture;
-    private String dependencies;
 
-    public DepResponse() {
-    }
-
-    public DepResponse(String name, String version, String architecture) {
-        this.name = name;
-        this.version = version;
-        this.architecture = architecture;
+    public DependencyRequest() {
     }
 
     public String getName() {
@@ -40,13 +33,5 @@ public class DepResponse {
 
     public void setArchitecture(String architecture) {
         this.architecture = architecture;
-    }
-
-    public String getDependencies() {
-        return dependencies;
-    }
-
-    public void setDependencies(String dependencies) {
-        this.dependencies = dependencies;
     }
 }

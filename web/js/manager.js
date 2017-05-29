@@ -17,7 +17,7 @@ $("#DepList").bootstrapTable({
             align: 'center',
             valign: 'middle'
         }, {            
-            title: '父依赖',
+            title: '条件依赖',
             field: 'dependencies',
             align: 'center',
             valign: 'middle'
@@ -45,7 +45,7 @@ $("#ImageList").bootstrapTable({
             align: 'center',
             valign: 'middle'
         }, {
-            title: '镜像根级依赖',
+            title: '软件依赖',
             field: 'dependencies',
             align: 'center',
             valign: 'middle'

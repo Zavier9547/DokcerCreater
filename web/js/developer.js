@@ -1,5 +1,6 @@
 var dependenciesOj = $('#dependenciesList>tbody');
-var dependenciesAlert = $('#alert1');
+
+$(function() {});
 
 $('#add').click(function() {
     var jsonM = {}
@@ -16,74 +17,77 @@ $('#add').click(function() {
         })
         .done(function(re) {
             if (re.status == "fail") {
-                alert("该依赖不存在，请确认你的输入。")
+                alert(re.info)
             } else {
-                var jsonM2 = {}
-                jsonM2.name = $('#nameOfParent').val()
-                jsonM2.version = $('#versionOfParent').val()
-
-                $.ajax({
-                        url: 'http://localhost:80/images',
-                        type: 'POST',
-                        dataType: 'json',
-                        contentType: 'application/json',
-                        data: JSON.stringify(jsonM2)
-                    })
-                    .done(function(data) {
-                        $.ajax({
-                        	url: 'http://localhost:80/images/'+data.info,
-                        	type: 'POST',
-                        	dataType: 'json',
-                        	contentType: 'application/json',
-                        	data: JSON.stringify(jsonM)
-                        })
-                        .done(function(t) {
-                        	if (t.status=="crashed"){
-                        		alert("该依赖和基础镜像存在依赖冲突！");
-                        	}else{
-                        		dependenciesOj.append('<tr><td></td><td>'+jsonM.name+'</td><td>'+jsonM.version+'</td><td>'+jsonM.architecture+'</td></tr>')
-                                $('#name').val('')
-                                $('#version').val('')
-                                $('#architecture').val('')      
-                        	}
-                        })
-                    })
-
+                dependenciesOj.append('<tr><td></td><td>'+jsonM.name+'</td><td>'+jsonM.version+'</td><td>'+jsonM.architecture+'</td></tr>')
+                $('#name').val('')
             }
         });
+});
 
+var tableOj = $('#read')
+var jsonA = []
+$('#conflict').click(function() {
+    tableOj.find("tr").each(function() {
+        var x = []
+        $(this).find("td").each(function(index, el) {
+            x[index] = $(el).text()
+        });
+        var y = {}
+        y.name = x[1]
+        y.version = x[2]
+        y.architecture = x[3]
+        jsonA.push(y)
+    });
+    var jsonM2 = {}
+    jsonM2.name = $('#nameOfParent').val()
+    jsonM2.version = $('#versionOfParent').val()
+    $.ajax({
+            url: 'http://localhost:80/images/id',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(jsonM2)
+        })
+        .done(function(data) {
+            $.ajax({
+                    url: 'http://localhost:80/images/' + data.info,
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(jsonA)
+                })
+                .done(function(re) {
+                    jsonA = []
+                    if (re.status == "fail") {
+                        alert(re.info)
+                    } else {
+                        alert("hehe,no problem")
+                    }
+                });
+        });
 
 });
 
 
-$(function() {});
-
-var formOj2 = $('#form2')
-var depOj2 = $('#dep')
-$('#getTable').click(function() {
-    var nameOfImageOj = formOj2.find('#nameOfImage')
-    var versionOfImageOj = formOj2.find('#versionOfImage')
-    var jsonM = {}
-    jsonM.name = nameOfImageOj.val()
-    jsonM.version = versionOfImageOj.val()
-    $.ajax({
-            url: 'http://localhost:80/images',
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify(jsonM)
-        })
-        .done(function(data) {
-            $.get('http://localhost:80/images/' + data.info + '/table', function(re) {
-                depOj2.empty();
-                depOj2.append('<thead><tr><th></th><th>依赖关系树</th></tr></thead>')
-                depOj2.append('<tbody>')
-                re.forEach(function(value, index, array) {
-                    depOj2.append('<tr><td></td><td>' + value.name + '</td></tr>')
-                });
-                depOj2.append('</tbody>')
-            });
-        })
-
-
+$("#ImageList").bootstrapTable({
+    url: "http://localhost:80/images",
+    columns: [
+        [ {
+            title: '镜像名称',
+            field: 'name',
+            align: 'center',
+            valign: 'middle'
+        }, {
+            title: '镜像版本',
+            field: 'version',
+            align: 'center',
+            valign: 'middle'
+        }, {
+            title: '软件依赖',
+            field: 'dependencies',
+            align: 'center',
+            valign: 'middle'
+        }]
+    ]
 })

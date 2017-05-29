@@ -1,7 +1,7 @@
-package DockerCreater.serviceData;
+package edu.nju.cs.DockerHelper.controllerData;
 
 /**
- * Created by Jon on 2017/5/5.
+ * Created by Jon on 2017/5/28.
  */
 public class ImageRequest {
     private String name;

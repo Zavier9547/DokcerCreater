@@ -1,7 +1,7 @@
-package DockerCreater.serviceData;
+package edu.nju.cs.DockerHelper.controllerData;
 
 /**
- * Created by Jon on 2017/5/5.
+ * Created by Jon on 2017/5/28.
  */
 public class Response {
     private String status;
@@ -9,6 +9,7 @@ public class Response {
 
     public Response() {
         this.status = "success";
+        this.info = "";
     }
 
     public Response(String info) {
@@ -30,5 +31,9 @@ public class Response {
 
     public void setInfo(String info) {
         this.info = info;
+    }
+
+    public void addInfo(String info){
+        this.info = this.info + info;
     }
 }
